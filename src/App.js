@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Drag from "./Drag";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const LIST = [
+  { id: 1, text: "AAA" },
+  { id: 2, text: "BBB" },
+  { id: 3, text: "CCC" },
+  { id: 4, text: "DDD" }
+];
+
+export default function App() {
+  const [list, setList] = useState(LIST);
+
+  const onChangeList = list => {
+    setList(list);
+  };
+
+  return <Drag list={list} onChangeList={onChangeList} />;
 }
-
-export default App;
